@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Efek Rumah Kaca</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    animation: fadeIn 2s ease;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    animation: fadeIn 3s ease;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: orange;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: yellow;
+    transform: scale(1.1);
+}
+
+/* SECTION */
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+/* ANIMASI */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🌍 Efek Rumah Kaca</h1>
+    <p>Fenomena yang mempengaruhi suhu bumi kita</p>
+    <button onclick="scrollToContent()">Pelajari Lebih</button>
+</header>
+
+<section id="content">
+
+    <div class="card hidden">
+        <h2>Apa Itu Efek Rumah Kaca?</h2>
+        <p>
+            Efek rumah kaca adalah proses terperangkapnya panas matahari di atmosfer bumi
+            oleh gas seperti karbon dioksida (CO₂), metana, dan uap air.
+        </p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Greenhouse_Effect.svg">
+    </div>
+
+    <div class="card hidden">
+        <h2>Penyebab</h2>
+        <p>
+            Aktivitas manusia seperti pembakaran bahan bakar fosil, kendaraan bermotor,
+            dan penebangan hutan meningkatkan jumlah gas rumah kaca.
+        </p>
+        <img src="https://picsum.photos/700/400?random=1">
+    </div>
+
+    <div class="card hidden">
+        <h2>Dampak</h2>
+        <p>
+            Dampaknya adalah pemanasan global, perubahan iklim ekstrem,
+            mencairnya es di kutub, dan kenaikan permukaan laut.
+        </p>
+        <img src="https://picsum.photos/700/400?random=2">
+    </div>
+
+</section>
+
+<script>
+function scrollToContent() {
+    document.getElementById("content").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+// animasi scroll
+const elements = document.querySelectorAll('.hidden');
+
+window.addEventListener('scroll', () => {
+    elements.forEach(el => {
+        const pos = el.getBoundingClientRect().top;
+        const screen = window.innerHeight;
+
+        if (pos < screen - 100) {
+            el.classList.add('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
